@@ -48,7 +48,7 @@ app.get('/help',(req,res)=>{
 app.get('/weather',(req,res)=>{
     if(!req.query.address){
         return res.send({
-            error:'write proper address'
+            error:'Please write address: '
         })
     }
     geocode(req.query.address,(error,{latitude,longitude,location}={})=>{
@@ -62,7 +62,7 @@ app.get('/weather',(req,res)=>{
             res.send({
                 forecast :forecastData,
                 location,
-                address :req.query.address
+                address :req.query.address,
             })
         })
     })
@@ -101,7 +101,7 @@ app.get('*',(req,res)=>{
     })
 })
 
-app.listen(2000, () => { 
+app.listen(3005, () => { 
     console.log('server is up to work')
 })
 
